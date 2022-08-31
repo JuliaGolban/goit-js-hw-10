@@ -32,11 +32,13 @@ function onSearchCountry(e) {
 function renderSearchQuery(data) {
   if (data.length > 10) {
     return tooManyMatches();
-  }
-  if (data.length > 1) {
+  } else if (data.length > 1) {
+    createMarkupListOfCountries(data);
+  } else if (data.length === 1) {
+    createMarkupArticleCountry(data);
+  } else {
     createMarkupListOfCountries(data);
   }
-  createMarkupArticleCountry(data);
 }
 
 function tooManyMatches() {
